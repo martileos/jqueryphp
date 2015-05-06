@@ -19,6 +19,7 @@ header img
 
 header nav
 {
+	display: none;
 	text-align: center;
 }
 
