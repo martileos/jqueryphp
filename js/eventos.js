@@ -8,8 +8,8 @@ var inicioApp = function()
 		{
 			if(usuario=="hola" && clave=="mundo")
 			{
-				$("#cajaUsuario").hide();
-				$("nav").show();
+				$("#cajaUsuario").hide("slow");
+				$("nav").show("slow");
 			}
 			else
 				alert("Usuario o contraseña incorrectos");
@@ -17,7 +17,20 @@ var inicioApp = function()
 		else
 			alert("Usuario o clave están vacíos");
 	}
+
+	var teclaClave = function(tecla)
+	{
+		if(tecla.which===13) //Que pena
+			validausuario();
+	}
+
 	$("#btnValidaUsuario").on("click",validausuario);
+	$("#txtClave").on("keypress",teclaClave);
 }
 
 $(document).on("ready",inicioApp);
+
+
+
+
+
