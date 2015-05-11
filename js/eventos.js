@@ -41,11 +41,51 @@ var inicioApp = function()
 			validausuario();
 	}
 
+	var Altas = function()
+	{
+		$("#artUsuarios").show("slow");
+		$("#txtNomUsuario").focus();
+	}
+
+	var teclaNomUsuario = function(tecla)
+	{
+		var usuario = $("#txtNomUsuario").val();
+		if(tecla.which === 13) //Enter
+		{
+			var parametros = "opcion=buscaUsuario"+
+							 "&usuario="+usuario+
+							 "&id="+Math.random();
+			$.ajax({
+				cache:false,
+				type: "POST",
+				dataType: "json",
+				url: "datos/buscaUsuario.php",
+				data: parametros,
+				success: function(response){
+
+				},
+				error: function(xhr,ajaxOptionx,throws){
+					
+				}
+			});
+		}
+	}
+
 	$("#btnValidaUsuario").on("click",validausuario);
 	$("#txtClave").on("keypress",teclaClave);
+	$("#btnAltas").on("click",Altas);
+	$("#txtNomUsuario").on("keypress",teclaNomUsuario);	
 }
-
 $(document).on("ready",inicioApp);
+
+
+
+
+
+
+
+
+
 
 
 
