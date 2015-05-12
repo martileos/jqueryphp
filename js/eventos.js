@@ -62,7 +62,13 @@ var inicioApp = function()
 				url: "datos/buscaUsuario.php",
 				data: parametros,
 				success: function(response){
-
+					if(response.respuesta == true)
+					{
+						$("#txtNombreUsuario").val(response.nombreCompleto);
+						$("#txtTipoUsuario").val(response.tipoUsuario);
+					}
+					else
+						$("#txtNombreUsuario").focus();
 				},
 				error: function(xhr,ajaxOptionx,throws){
 					
