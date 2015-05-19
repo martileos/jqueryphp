@@ -44,6 +44,16 @@ var inicioApp = function()
 	var Altas = function()
 	{
 		$("#artUsuarios").show("slow");
+		$("#btnEliminarUsuarios").hide();
+		$("#btnGuardarUsuarios").show();		
+		$("#txtNomUsuario").focus();
+	}
+
+	var Bajas = function()
+	{
+		$("#artUsuarios").show("slow");
+		$("#btnEliminarUsuarios").show();
+		$("#btnGuardarUsuarios").hide();		
 		$("#txtNomUsuario").focus();
 	}
 
@@ -116,11 +126,43 @@ var inicioApp = function()
 		}
 	}
 
+	var EliminarUsuarios = function()
+	{
+		var usuario = $("#txtNomUsuario").val();
+		if(usuario!="")
+		{
+			var parametros = "opcion=eliminarusuarios"+
+							 "&usuario="+usuario+
+							 "&id="+Math.random();
+			$.ajax({
+				cache: false,
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				url: "datos/eliminarusuarios.php",
+				success: function(response){
+					if(response.respuesta == true)
+					{
+						alert("Se ha eliminado el usuario");
+						$("#artUsuarios > input").val("");
+						$("#txtNomUsuario").focus();
+					}
+				},
+				error: function(xhr,ajaxOption,throws){
+					console.log("Ha ocurrido un error");
+				}
+			});
+		}	
+	}
+
 	$("#btnValidaUsuario").on("click",validausuario);
 	$("#txtClave").on("keypress",teclaClave);
 	$("#btnAltas").on("click",Altas);
 	$("#txtNomUsuario").on("keypress",teclaNomUsuario);	
 	$("#btnGuardarUsuarios").on("click",GuardarUsuarios);	
+	$("#btnBajas").on("click",Bajas);
+	$("#btnEliminarUsuarios").on("click",EliminarUsuarios);
+
 }
 $(document).on("ready",inicioApp);
 
