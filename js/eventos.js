@@ -45,6 +45,7 @@ var inicioApp = function()
 	{
 		$("#artUsuarios").show("slow");
 		$("#btnEliminarUsuarios").hide();
+		$("#btnCambiarUsuarios").hide();
 		$("#btnGuardarUsuarios").show();		
 		$("#txtNomUsuario").focus();
 	}
@@ -53,7 +54,17 @@ var inicioApp = function()
 	{
 		$("#artUsuarios").show("slow");
 		$("#btnEliminarUsuarios").show();
-		$("#btnGuardarUsuarios").hide();		
+		$("#btnGuardarUsuarios").hide();	
+		$("#btnCambiarUsuarios").hide();				
+		$("#txtNomUsuario").focus();
+	}
+
+	var Cambiar = function()
+	{
+		$("#artUsuarios").show("slow");
+		$("#btnEliminarUsuarios").hide();
+		$("#btnGuardarUsuarios").hide();	
+		$("#btnCambiarUsuarios").show();				
 		$("#txtNomUsuario").focus();
 	}
 
@@ -155,6 +166,39 @@ var inicioApp = function()
 		}	
 	}
 
+	var CambiarUsuarios = function()
+	{
+		var usuario = $("#txtNomUsuario").val();
+		var nombre  = $("#txtNombreUsuario").val();		
+		var tipo    = $("#txtTipoUsuario").val();	
+		if(usuario!="" && nombre!="" && tipo!="")
+		{
+			var parametros = "opcion=cambiarusuarios"+
+							 "&usuario="+usuario+
+							 "&nombre="+nombre+
+							 "&tipousuario="+tipo+
+							 "&id="+Math.random();
+			$.ajax({
+				cache: false,
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				url: "datos/cambiarusuarios.php",
+				success: function(response){
+					if(response.respuesta == true)
+					{
+						alert("Se ha cambiado la información del usuario");
+						$("#artUsuarios > input").val("");
+						$("#txtNomUsuario").focus();
+					}
+				},
+				error: function(xhr,ajaxOption,throws){
+					console.log("Ha ocurrido un error");
+				}
+			});
+		}	
+	}
+
 	$("#btnValidaUsuario").on("click",validausuario);
 	$("#txtClave").on("keypress",teclaClave);
 	$("#btnAltas").on("click",Altas);
@@ -162,6 +206,8 @@ var inicioApp = function()
 	$("#btnGuardarUsuarios").on("click",GuardarUsuarios);	
 	$("#btnBajas").on("click",Bajas);
 	$("#btnEliminarUsuarios").on("click",EliminarUsuarios);
+	$("#btnCambiar").on("click",Cambiar);
+	$("#btnCambiarUsuarios").on("click",CambiarUsuarios);
 
 }
 $(document).on("ready",inicioApp);
