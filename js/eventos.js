@@ -43,6 +43,7 @@ var inicioApp = function()
 
 	var Altas = function()
 	{
+		$("section > article").hide("slow");
 		$("#artUsuarios").show("slow");
 		$("#btnEliminarUsuarios").hide();
 		$("#btnCambiarUsuarios").hide();
@@ -52,6 +53,7 @@ var inicioApp = function()
 
 	var Bajas = function()
 	{
+		$("section > article").hide("slow");
 		$("#artUsuarios").show("slow");
 		$("#btnEliminarUsuarios").show();
 		$("#btnGuardarUsuarios").hide();	
@@ -61,6 +63,7 @@ var inicioApp = function()
 
 	var Cambiar = function()
 	{
+		$("section > article").hide("slow");
 		$("#artUsuarios").show("slow");
 		$("#btnEliminarUsuarios").hide();
 		$("#btnGuardarUsuarios").hide();	
