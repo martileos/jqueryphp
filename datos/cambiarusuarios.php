@@ -3,9 +3,9 @@
 function cambiarusuarios()
 {
 	$respuesta = false;
-	$usuario = "'".$_POST["usuario"]."'";
-	$nombre  = "'".$_POST["nombre"]."'";
-	$tipo    = $_POST["tipousuario"];
+	$usuario   = "'".$_POST["usuario"]."'";
+	$nombre    = "'".$_POST["nombre"]."'";
+	$tipo      = $_POST["tipousuario"];
 	$conexion  = mysql_connect("localhost","root","");
 	mysql_select_db("pw10am");
 	$consulta  = sprintf("update usuarios set nombre=%s,tipousuario=%d where usuario=%s",$nombre,$tipo,$usuario);

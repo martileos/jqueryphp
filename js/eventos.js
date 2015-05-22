@@ -198,7 +198,29 @@ var inicioApp = function()
 			});
 		}	
 	}
-
+	var Consultas = function()
+	{
+		$("section > article").hide("slow");
+		$("#artConsultas").show("slow");
+		var parametros = "opcion=consultas"+
+						 "&id="+Math.random();
+		$.ajax({
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			data: parametros,
+			url: "datos/consultas.php",
+			success: function(response){
+				if(response.respuesta == true)
+				{
+					$("#tablaConsultas").html(response.renglones);
+				}
+			},
+			error: function(xhr,ajaxOption,throws){
+				console.log("Ha ocurrido un error");
+			}
+		});
+	}
 	$("#btnValidaUsuario").on("click",validausuario);
 	$("#txtClave").on("keypress",teclaClave);
 	$("#btnAltas").on("click",Altas);
@@ -208,7 +230,7 @@ var inicioApp = function()
 	$("#btnEliminarUsuarios").on("click",EliminarUsuarios);
 	$("#btnCambiar").on("click",Cambiar);
 	$("#btnCambiarUsuarios").on("click",CambiarUsuarios);
-
+	$("#btnConsultas").on("click",Consultas);
 }
 $(document).on("ready",inicioApp);
 
