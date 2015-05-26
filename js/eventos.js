@@ -230,6 +230,7 @@ var inicioApp = function()
 		var usuario = $(this).val();
 		$("#txtNomUsuario").val(usuario);
 		EliminarUsuarios();
+		Consultas();
 	}
 
 	//Eventos del usuario.
