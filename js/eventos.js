@@ -224,6 +224,15 @@ var inicioApp = function()
 			}
 		});
 	}
+
+	var TablaEliminar = function()
+	{
+		var usuario = $(this).val();
+		$("#txtNomUsuario").val(usuario);
+		EliminarUsuarios();
+	}
+
+	//Eventos del usuario.
 	$("#btnValidaUsuario").on("click",validausuario);
 	$("#txtClave").on("keypress",teclaClave);
 	$("#btnAltas").on("click",Altas);
@@ -234,6 +243,7 @@ var inicioApp = function()
 	$("#btnCambiar").on("click",Cambiar);
 	$("#btnCambiarUsuarios").on("click",CambiarUsuarios);
 	$("#btnConsultas").on("click",Consultas);
+	$("#tablaConsultas").on("click",".btnTablaEliminar",TablaEliminar);
 }
 $(document).on("ready",inicioApp);
 
