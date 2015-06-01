@@ -1,0 +1,17 @@
+body
+{
+	max-width: 1024px;
+}
+
+.azul
+{
+	border: 1px solid red;
+	background: blue;
+}
+
+.rojo
+{
+	border: 1px solid blue;
+	background: red;
+}
+

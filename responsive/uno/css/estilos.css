@@ -1,0 +1,88 @@
+body
+{
+	max-width: 1024px;
+}
+
+header
+{
+	background: peru;
+	text-align: center;
+}
+
+header img
+{
+	float: right;
+	margin-top: -90px;
+	width: 70px;
+}
+
+header ul li
+{
+	background: blue;
+	border-radius: 5px;
+	color: white;
+	display: inline-block;
+	padding: 0px 10px;
+}
+
+section article
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+}
+
+footer
+{
+	background: peru;
+	text-align: center;
+}
+
+#menuCelular
+{
+	display: none;
+}
+
+/*Media Queries*/
+@media screen and (min-width: 480px) and (max-width: 640px){
+	body
+	{
+		width: 100%;
+	}
+	header
+	{
+		font-size: 0.5em;
+		width: 100%;
+	}
+	header img
+	{
+		display: none;
+	}
+
+	header nav
+	{
+		display: none;
+	}
+
+	section article
+	{
+		display: block;
+		width: 100%;
+	}
+	#menuCelular
+	{
+		display: block;
+		width: 100%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
